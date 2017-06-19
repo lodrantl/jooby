@@ -284,7 +284,8 @@ public class JoobyTask extends ConventionTask {
           .toArray(new Path[0]);
       // don't start watcher if continuous is ON
       new Watcher((k, path) -> {
-        if (path.toString().endsWith(".java")) {
+        if (path.toString().endsWith(".java")
+            || path.toString().endsWith(".kt")) {
           runTask(project, path, "classes");
         } else if (path.toString().endsWith(".conf")
             || path.toString().endsWith(".properties")) {
